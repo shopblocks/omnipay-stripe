@@ -126,6 +126,16 @@ class AuthorizeRequest extends AbstractRequest
         return $this->getParameter('confirm');
     }
 
+    public function setConfirmationMethod($value)
+    {
+        $this->setParameter('confirmation_method', $value);
+    }
+
+    public function getConfirmationMethod()
+    {
+        return $this->getParameter('confirmation_method');
+    }
+
     /**
      * @return mixed
      */
@@ -343,7 +353,7 @@ class AuthorizeRequest extends AbstractRequest
             $data['customer'] = $this->getCustomerReference();
         }
 
-        $data['confirmation_method'] = 'manual';
+        $data['confirmation_method'] = $this->getConfirmationMethod() ?? 'manual';
         $data['capture_method'] = 'manual';
 
         $data['confirm'] = $this->getConfirm() ? 'true' : 'false';

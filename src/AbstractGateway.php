@@ -150,6 +150,17 @@ abstract class AbstractGateway extends AbstractOmnipayGateway
         return $this->setParameter('apiKey', $value);
     }
 
+    public function setConfirmationMethod($value)
+    {
+        $this->setParameter('confirmation_method', $value);
+    }
+
+    public function getConfirmationMethod()
+    {
+        return $this->getParameter('confirmation_method');
+    }
+
+
     /**
      * Authorize Request.
      *
