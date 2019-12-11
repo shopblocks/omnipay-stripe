@@ -123,11 +123,13 @@ class RefundRequest extends AbstractRequest
             $data['reverse_transfer'] = 'true';
         }
 
+        $data['payment_intent'] = $this->getTransactionReference();
+
         return $data;
     }
 
     public function getEndpoint()
     {
-        return $this->endpoint.'/charges/'.$this->getTransactionReference().'/refund';
+        return $this->endpoint.'/refunds';
     }
 }
